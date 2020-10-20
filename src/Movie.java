@@ -44,4 +44,15 @@ public class Movie {
     }
   return thisAmount;
   }
+
+  public int getFrequentRenterPoints(int daysRented) {
+    int frequentRenterPoints = 0;
+        // add frequent renter points
+    frequentRenterPoints ++;
+
+    if ((this.getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)  
+      frequentRenterPoints ++;
+    return frequentRenterPoints;
+  }
+
 }
