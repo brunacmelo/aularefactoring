@@ -5,17 +5,29 @@ public class HtmlStatement extends Statement {
   public String value(Customer aCustomer) {
 
     Enumeration rentals = aCustomer.getRentals();
-      String result = "<H1>Rentals for <EM>" + aCustomer.getName() + "</EM></H1><P>\n";
-      while (rentals.hasMoreElements()) {
-        Rental each = (Rental) rentals.nextElement();
-         //show figures for each rental
-        result += each.getMovie().getTitle()+ ": " +
-        String.valueOf(each.getCharge()) + "<BR>\n";
-      }
+    String result = this.value1(aCustomer);
+    while (rentals.hasMoreElements()) {
+      Rental each = (Rental) rentals.nextElement();
+      result += this.value2(each);
+    }
       //add footer lines
-      result += "<P>You owe <EM>" + String.valueOf(aCustomer.getTotalCharge()) + "</EM><P>\n";
-      result += "On this rental you earned <EM>" + 
-      String.valueOf(aCustomer.getTotalFrequentRenterPoints()) +"</EM> frequent renter points<P>";
+    result += this.value3(aCustomer);
+
+    return result;
+  }
+
+  public String value1(Customer aCustomer) {
+    return  "<H1>Rentals for <EM>" + aCustomer.getName() + "</EM></H1><P>\n";
+  }
+
+  public String value2(Rental each){
+    return each.getMovie().getTitle()+ ": " +
+    String.valueOf(each.getCharge()) + "<BR>\n";
+  }
+
+  public String value3(Customer aCustomer) {
+    String result = "<P>You owe <EM>" + String.valueOf(aCustomer.getTotalCharge()) + "</EM><P>\n";
+    result += "On this rental you earned <EM>" + String.valueOf(aCustomer.getTotalFrequentRenterPoints()) + "</EM> frequent renter points<P>";
     return result;
   }
 }
