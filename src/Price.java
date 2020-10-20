@@ -1,16 +1,10 @@
 public abstract class Price {
 
-  public abstract int getPriceCode();
+ 	public abstract int getPriceCode();
 
-  public abstract double getCharge(int daysRented);
+ 	public abstract double getCharge(int daysRented);
 
-  public int getFrequentRenterPoints(int daysRented) {
-    int frequentRenterPoints = 0;
-        // add frequent renter points
-    frequentRenterPoints ++;
-
-    if ((this.getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)  
-      frequentRenterPoints ++;
-    return frequentRenterPoints;
-  }
+ 	public int getFrequentRenterPoints(int daysRented) {
+    	return 1;
+	}
 }
